@@ -16,30 +16,37 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await dispatch(register(form));
-    navigate("/"); // redirect to login
+    navigate("/"); // go to login
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
       <h2>Register</h2>
 
-      <input
-        placeholder="Name"
-        onChange={(e) => setForm({ ...form, name: e.target.value })}
-      />
+      {/* 🔙 Back Button */}
+      <button onClick={() => navigate(-1)}>⬅ Back</button>
 
-      <input
-        placeholder="Email"
-        onChange={(e) => setForm({ ...form, email: e.target.value })}
-      />
+      <form onSubmit={handleSubmit}>
+        <input
+          placeholder="Name"
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
+        />
 
-      <input
-        type="password"
-        placeholder="Password"
-        onChange={(e) => setForm({ ...form, password: e.target.value })}
-      />
+        <input
+          placeholder="Email"
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+        />
 
-      <button>Register</button>
-    </form>
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) =>
+            setForm({ ...form, password: e.target.value })
+          }
+        />
+
+        <button type="submit">Register</button>
+      </form>
+    </div>
   );
 }
