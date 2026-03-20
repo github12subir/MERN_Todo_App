@@ -1,12 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
+
+dotenv.config(); // ✅ FIRST load env
+
 const connectDB = require("./config/db");
 
 // connect DB
+console.log("Connecting to DB...");
 connectDB();
-
-dotenv.config();
 
 const app = express();
 
