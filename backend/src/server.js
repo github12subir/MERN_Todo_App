@@ -12,7 +12,18 @@ connectDB();
 
 const app = express();
 
-app.use(cors());
+// ✅ UPDATED CORS (IMPORTANT)
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173", // local frontend
+      "https://mern-todo-app-frontend-tau.vercel.app", // ✅ live frontend
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 app.use("/auth", require("./routes/authRoutes"));
